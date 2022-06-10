@@ -1,7 +1,4 @@
-
 <!-- Codecs -->
-<!-- G7221@32000h,G7221@16000h,G722,PCMU,PCMA,iLBC,GSM,H263,H264 -->
-
 <X-PRE-PROCESS cmd="set" data="global_codec_prefs=G7221@32000h,G7221@16000h,G722,PCMU,PCMA,GSM,H263,H264,VP8" />
 <X-PRE-PROCESS cmd="set" data="outbound_codec_prefs=PCMU,PCMA,GSM,H263,H264,VP8" />
 <X-PRE-PROCESS cmd="set" data="media_mix_inbound_outbound_codecs=true" />
@@ -26,25 +23,15 @@
 <X-PRE-PROCESS cmd="set" data="domain_uuid=f56ba27b-1bee-464a-bc0e-4b240de1fa67" />
 
 <!-- Dingaling -->
-<!-- xmpp_client_profile and xmpp_server_profile xmpp_client_profile can be any string. xmpp_server_profile is appended to "dingaling_" to form the database name containing the "subscriptions" table. used by: dingaling.conf.xml enum.conf.xml -->
 <X-PRE-PROCESS cmd="set" data="xmpp_client_profile=xmppc" />
 <X-PRE-PROCESS cmd="set" data="xmpp_server_profile=xmpps" />
 <X-PRE-PROCESS cmd="set" data="bind_server_ip=auto" />
 
 <!-- Domain -->
-<!-- Sets the default domain. -->
 <X-PRE-PROCESS cmd="set" data="domain=$${local_ip_v4}" />
 <X-PRE-PROCESS cmd="set" data="domain_name=$${domain}" />
 
 <!-- IP Address -->
-<!-- (If you''re going to load test then please input real IP addresses for external_rtp_ip and external_sip_ip)
-
-Can be an one of:
-   ip address: "12.34.56.78"
-   a stun server lookup: "stun:stun.server.com"
-   a DNS name: "host:host.server.com"
-
-where fs.mydomain.com is a DNS A record-useful when fs is on a dynamic IP address, and uses a dynamic DNS updater. If unspecified, the bind_server_ip value is used. Used by: sofia.conf.xml dingaling.conf.xml -->
 <X-PRE-PROCESS cmd="set" data="external_rtp_ip=$${local_ip_v4}" />
 <X-PRE-PROCESS cmd="set" data="external_sip_ip=$${local_ip_v4}" />
 
@@ -52,11 +39,9 @@ where fs.mydomain.com is a DNS A record-useful when fs is on a dynamic IP addres
 <X-PRE-PROCESS cmd="set" data="hold_music=local_stream://default" />
 
 <!-- Ringtones -->
-<!-- Default ringtone (US) -->
 <X-PRE-PROCESS cmd="set" data="us-ring=%(2000,4000,440,480)" />
 
 <!-- SIP -->
-<!-- Used to turn on sip loopback unrolling. -->
 <X-PRE-PROCESS cmd="set" data="unroll_loops=true" />
 <X-PRE-PROCESS cmd="set" data="sip_tls_version=tlsv1" />
 
@@ -75,7 +60,5 @@ where fs.mydomain.com is a DNS A record-useful when fs is on a dynamic IP addres
 <X-PRE-PROCESS cmd="set" data="internal_ssl_dir=$${conf_dir}/ssl" />
 
 <!-- Sound -->
-
-<X-NO-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/en/us/callie"/> <!--屏蔽英文音频资源的路径设置-->
+<X-NO-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/en/us/callie"/>
 <X-PRE-PROCESS cmd="set" data="sound_prefix=$${sounds_dir}/zh/cn/link" />
-
