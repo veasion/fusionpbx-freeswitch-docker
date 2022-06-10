@@ -104,7 +104,11 @@ socket event默认设置为: localhost  端口 8021  默认密码： ClueCon
 
 ### sip软电话测试
 
-安装 eyeBeam https://veasion-files.oss-cn-shanghai.aliyuncs.com/github/files/eyebeam_V1.5.rar
+windows 安装 eyeBeam https://veasion-files.oss-cn-shanghai.aliyuncs.com/github/files/eyebeam_V1.5.rar
+
+android 安装 linphone http://www.linphone.org/sites/default/files/linphone-latest.apk
+
+
 
 添加SIP账号示例：用户名和鉴权用户名 1000，口令 1234，域名 139.224.75.196:5060
 
