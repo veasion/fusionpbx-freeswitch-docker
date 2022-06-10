@@ -7,5 +7,6 @@ sudo docker cp conf/lang/zh fusionpbx:/etc/freeswitch/languages/zh
 sudo docker cp conf/sounds/zh fusionpbx:/usr/share/freeswitch/sounds/zh
 sudo docker exec fusionpbx bash -c "sudo chown -R freeswitch:freeswitch /etc/freeswitch && sudo chmod 777 /etc/freeswitch"
 sudo docker exec fusionpbx bash -c "sudo chown -R freeswitch:freeswitch /usr/share/freeswitch/sounds/zh && sudo chmod 777 /usr/share/freeswitch/sounds/zh"
+sudo docker exec fusionpbx bash -c "sudo cp /usr/share/freeswitch/sounds/music /usr/share/freeswitch/sounds/default -r"
 sudo docker restart fusionpbx
 sudo echo "done."

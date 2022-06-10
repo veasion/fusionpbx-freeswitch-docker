@@ -102,6 +102,15 @@ socket event默认设置为: localhost  端口 8021  默认密码： ClueCon
 
 
 
+### 拨打96646不通，日志报错 
+
+[CRIT] switch_loadable_module.c:1520 Error Loading module /usr/lib/freeswitch/mod/mod_local_stream.so
+**Module load routine returned an error
+
+fs_cli 中执行  reload mod_local_stream
+
+
+
 ### sip软电话测试
 
 windows 安装 eyeBeam https://veasion-files.oss-cn-shanghai.aliyuncs.com/github/files/eyebeam_V1.5.rar
@@ -110,7 +119,7 @@ android 安装 linphone http://www.linphone.org/sites/default/files/linphone-lat
 
 
 
-添加SIP账号示例：用户名和鉴权用户名 1000，口令 1234，域名 139.224.75.196:5060
+添加SIP账号示例：用户名和鉴权用户名 1000，口令 1234，域名 139.224.75.196:5060    类型：udp
 
 另一台电脑也运行一个，两个拨号测试。
 
@@ -129,4 +138,31 @@ tail -fn 200 /var/log/freeswitch/freeswitch.log
 
 ## fusionpbx详细设置地址：
 http://note.youdao.com/noteshare?id=74a91bfa08a298cfab62262a66713fbc&sub=35DB41D2771B4E2F82C6C1B139421E33
+
+
+
+## ~~配置网关和拨号计划~~
+
+配置网关(conf/sip_profiles/external 下添加一个 gateway_test.xml)：
+
+<gateway name="gateway_test">
+    <param name="realm" value="语音网关IP" />
+    <param name="username" value="账号" />
+    <param name="password" value="密码" />
+    <!-- <param name="proxy" value="代理IP:5060" /> -->
+    <param name="register" value="true" />
+</gateway>
+
+
+
+拨号计划(conf/dialplan/default 下添加一个 test.xml)：
+
+<include>
+    <extension name="call out">
+	    <!-- 86开头路由到test网关（真实号码不包含86） -->
+        <condition field="destination_number" expression="^86(\d+)$">
+            <action application="bridge" data="sofia/gateway/gateway_test/$1"/>
+        </condition>
+    </extension>
+</include>
 
